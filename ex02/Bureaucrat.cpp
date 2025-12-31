@@ -15,7 +15,7 @@
 #include "Bureaucrat.hpp"
 #include "GradeTooHighException.hpp"
 #include "GradeTooLowException.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 Bureaucrat::~Bureaucrat()
 {}
@@ -87,7 +87,7 @@ void    Bureaucrat::downgrade(int by)
     _grade += by;
 }
 
-void    Bureaucrat::signForm(Form &form)
+void    Bureaucrat::signForm(AForm &form)
 {
     try
     {
@@ -104,4 +104,17 @@ void    Bureaucrat::signForm(Form &form)
         std::cout << _name << " couldn’t sign " << form.getName() << " because " << e.what() << "\n";
     }
     
+}
+
+void Bureaucrat::executeForm(AForm const & form) const
+{
+    try
+    {
+        form.execute(*this);
+        std::cout << _name << " executed " << form.getName() << "\n";
+    }
+    catch (std::exception &e)
+    {
+        std::cout << _name << " couldn’t execute " << form.getName() << " because " << e.what() << "\n";
+    }
 }
