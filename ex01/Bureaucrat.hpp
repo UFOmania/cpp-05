@@ -15,6 +15,8 @@
 
 #include <string>
 
+class Form;
+
 class Bureaucrat
 {
     private:
@@ -33,7 +35,7 @@ class Bureaucrat
         void upgrade(int by);
         void downgrade(int by);
 
-        
+        void signForm(Form &form);
 };
 
 std::ostream &operator<<(std::ostream &os, Bureaucrat const &bureaucrat);

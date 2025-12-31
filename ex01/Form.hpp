@@ -16,13 +16,15 @@
 #include <ostream>
 #include <string>
 
+class Bureaucrat;
+
 class Form
 {
     private:
-        std::string _name;
+        const std::string _name;
         bool _isSigned;
-        const int _gradeToSign;
-        const int _gradeToExec;
+        int _gradeToExec;
+        int _gradeToSign;
 
     public:
         ~Form();
@@ -35,6 +37,8 @@ class Form
         bool getIsSigned() const;
         int getGradeToSign() const;
         int getGradeToExec() const;
+
+        void beSigned(Bureaucrat const &bur);
 };
 
 std::ostream &operator<<(std::ostream &os, Form const &form);

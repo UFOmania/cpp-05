@@ -10,14 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
 #include <ostream>
 #include "Bureaucrat.hpp"
 #include "GradeTooHighException.hpp"
 #include "GradeTooLowException.hpp"
+#include "Form.hpp"
 
 Bureaucrat::~Bureaucrat()
 {}
-
 
 Bureaucrat::Bureaucrat()
 {
@@ -32,6 +33,8 @@ Bureaucrat::Bureaucrat(std::string const &name, int grade): _name(name)
         throw GradeTooHighException();
     else if (grade <= 0)
         throw GradeTooLowException();
+
+    _grade = grade;
 }
 
 
@@ -82,4 +85,23 @@ void    Bureaucrat::downgrade(int by)
     if (_grade + by > 150)
         throw GradeTooLowException();
     _grade += by;
+}
+
+void    Bureaucrat::signForm(Form &form)
+{
+    try
+    {
+        if (form.getIsSigned() == false)
+        {
+            form.beSigned(*this);
+            std::cout << _name << " signed " << form.getName() << "\n";
+        }
+        else
+            std::cout << form.getName() << " is already signed" << "\n";
+    }
+    catch(const std::exception& e)
+    {
+        std::cout << _name << " couldn’t sign " << form.getName() << " because " << e.what() << "\n";
+    }
+    
 }

@@ -12,24 +12,21 @@
 
 #include "iostream"
 #include <exception>
-
+#include "Form.hpp"
 #include "Bureaucrat.hpp"
 #include "GradeTooHighException.hpp"
 #include "GradeTooLowException.hpp"
 
 int main()
 {
+    Form f("stage", 10, 2);
+    std::cout << f << std::endl;
 
-    Bureaucrat v("hmad", 2);
-    
-    try
-    {
-        v.upgrade(5);
-    }
-    catch (std::exception &e)
-    {
-        std::cout << e.what() << "\n";
-    }
+    Bureaucrat v("hmad", 20);
+    Bureaucrat r("rachid", 2);
+    Bureaucrat t("icham", 2);
 
-    std::cout <<  "done\n";
+    v.signForm(f);
+    r.signForm(f);
+    t.signForm(f);
 }

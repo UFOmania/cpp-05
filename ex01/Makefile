@@ -1,4 +1,4 @@
-src = Bureaucrat.cpp GradeTooHighException.cpp GradeTooLowException.cpp main.cpp
+src = Bureaucrat.cpp GradeTooHighException.cpp GradeTooLowException.cpp Form.cpp main.cpp
 
 flags = -Wall -Wextra -Werror -MMD -std=c++98
 
