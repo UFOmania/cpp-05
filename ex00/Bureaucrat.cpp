@@ -32,6 +32,7 @@ Bureaucrat::Bureaucrat(std::string const &name, int grade): _name(name)
         throw GradeTooHighException();
     else if (grade <= 0)
         throw GradeTooLowException();
+    grade = grade;
 }
 
 
