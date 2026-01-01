@@ -14,7 +14,6 @@
 #define GRADETOOHIGHEXCEPTION_HPP
 
 #include <exception>
-#include <string>
 
 class GradeTooHighException : public std::exception
 {

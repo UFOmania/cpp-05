@@ -13,6 +13,7 @@
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 #include "GradeTooLowException.hpp"
+#include "FormAlreadySignedException.hpp"
 
 Form::~Form()
 {}
@@ -61,8 +62,12 @@ int Form::getGradeToSign() const
 
 void Form::beSigned(Bureaucrat const &bur)
 {
+	if (_isSigned == true)
+		throw FormAlreadySignedException();
+
     if (bur.getGrade() > _gradeToSign)
         throw GradeTooLowException();
+		
     _isSigned = true;
 }
 

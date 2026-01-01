@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef AFORM_HPP
-#define AFOEM_HPP
+#define AFORM_HPP
 
 #include <ostream>
 #include <string>
@@ -27,7 +27,7 @@ class AForm
         int _gradeToSign;
 
     public:
-        ~AForm();
+        virtual ~AForm();
         AForm();
         AForm(std::string _name, int gradeToSign, int gradeToExic);
         AForm(AForm const &other);
@@ -37,13 +37,13 @@ class AForm
         bool getIsSigned() const;
         int getGradeToSign() const;
         int getGradeToExec() const;
-        void setIsSigned(bool val);
-        void setGradeToSign(int val);
-        void setGradeToExec(int val);
+        
 
         void beSigned(Bureaucrat const &bur);
 
-        virtual void execute(Bureaucrat const & executor) const = 0;
+        void execute(Bureaucrat const & executor) const;
+	protected:
+		virtual void exec() const = 0;
 };
 
 std::ostream &operator<<(std::ostream &os, AForm const &form);

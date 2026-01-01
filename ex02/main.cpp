@@ -14,6 +14,8 @@
 // #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+
 
 int main()
 {
@@ -21,12 +23,33 @@ int main()
     // Form f("stage", 10, 2);
     // std::cout << f << std::endl;
     AForm *f = new ShrubberyCreationForm();
-    Bureaucrat v("hmad", 20);
+	AForm *g = new RobotomyRequestForm();
 
-    v.signForm(*f);
-    v.executeForm(*f);
-    // Bureaucrat r("rachid", 2);
+    Bureaucrat v("hmad", 150);
+    Bureaucrat r("rachid", 2);
+
+    // v.signForm(*f);
+	// try
+	// {
+	// 	v.executeForm(*f);
+	// }
+	// catch(const std::exception& e)
+	// {
+	// 	std::cerr << e.what() << '\n';
+	// }
+	try
+	{
+		r.signForm(*g);
+		r.executeForm(*g);
+
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
     // Bureaucrat t("icham", 2);
+	delete f;
 
     // v.signForm(f);
     // r.signForm(f);

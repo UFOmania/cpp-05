@@ -1,4 +1,4 @@
-src = AForm.cpp GradeTooLowException.cpp  ShrubberyCreationForm.cpp Bureaucrat.cpp PresidentialPardonForm.cpp main.cpp GradeTooHighException.cpp  RobotomyRequestForm.cpp
+src = AForm.cpp GradeTooLowException.cpp  ShrubberyCreationForm.cpp Bureaucrat.cpp PresidentialPardonForm.cpp main.cpp GradeTooHighException.cpp  RobotomyRequestForm.cpp FormNotSignedException.cpp
 flags = -Wall -Wextra -Werror -MMD -std=c++98
 
 obj = $(src:.cpp=.o)
