@@ -19,17 +19,73 @@
 
 int main()
 {
+	std::cout << "----------------------------------\n";
+	{
+		try{
+			Bureaucrat a("A", 0);
+		}
+		catch(std::exception &e)
+		{
+			std::cout << e.what()<< "\n";
+		}
+	}
+	std::cout << "----------------------------------\n";
+	{
+		try{
+			Bureaucrat a("B", 151);
+		}
+		catch(std::exception &e)
+		{
+			std::cout << e.what()<< "\n";
+		}
+	}
+	std::cout << "----------------------------------\n";
+	
+	{
+		try{
+			Bureaucrat a("C", 50);
+			std::cout << "1) " << a << "\n";
+			a.downgrade(10);
+			std::cout << "2) " << a << "\n";
+			a.downgrade(200);
+			std::cout << "3) " << a << "\n";
+		}
+		catch(std::exception &e)
+		{
+			std::cout << e.what()<< "\n";
+		}
+	}
+	std::cout << "----------------------------------\n";
+	
+	{
+		try{
+			Bureaucrat a("D", 50);
+			std::cout << "1) " << a << "\n";
+			a.upgrade(10);
+			std::cout << "2) " << a << "\n";
+			a.upgrade(200);
+			std::cout << "3) " << a << "\n";
+		}
+		catch(std::exception &e)
+		{
+			std::cout << e.what()<< "\n";
+		}
+	}
+	
+	std::cout << "----------------------------------\n";
+    {
+		
+		
+		try
+		{
+			Bureaucrat a("E", 2);
 
-    Bureaucrat v("hmad", 2);
-    
-    try
-    {
-        v.upgrade(5);
-    }
-    catch (std::exception &e)
-    {
-        std::cout << e.what() << "\n";
-    }
+		}
+		catch (std::exception &e)
+		{
+			std::cout << e.what() << "\n";
+	    }
+	}
 
     std::cout <<  "done\n";
 }

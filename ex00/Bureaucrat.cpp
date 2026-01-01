@@ -19,35 +19,29 @@ Bureaucrat::~Bureaucrat()
 {}
 
 
-Bureaucrat::Bureaucrat()
-{
-    _name = "default";
-    _grade = 150;
-}
+Bureaucrat::Bureaucrat() : _name("default"), _grade(150)
+{}
 
 
 Bureaucrat::Bureaucrat(std::string const &name, int grade): _name(name)
 {
     if (grade > 150)
-        throw GradeTooHighException();
-    else if (grade <= 0)
         throw GradeTooLowException();
-    grade = grade;
+    else if (grade <= 0)
+        throw GradeTooHighException();
+    _grade = grade;
 }
 
 
-Bureaucrat::Bureaucrat(const Bureaucrat & other)
-{
-    *this = other;
-}
+Bureaucrat::Bureaucrat(const Bureaucrat & other) : _grade(other._grade)
+{}
 
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat & other)
 {
     if (this == &other)
         return *this;
-        
-    _name = other._name;
+
     _grade = other._grade;
     
     return *this;
@@ -55,9 +49,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat & other)
 
 std::ostream &operator<<(std::ostream &os, Bureaucrat const &bureaucrat)
 {
-    std::string output = bureaucrat.getName() + ", bureaucrat grade ";
-    output += bureaucrat.getGrade();
-    os <<  output;
+    os <<  bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade();
     return os;
 }
 

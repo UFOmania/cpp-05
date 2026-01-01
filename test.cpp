@@ -2,11 +2,25 @@
 #include <iostream>
 
 
+class MyEx : public std::exception
+{
+	public:
+		~MyEx() throw()
+		{
+			std::cout << "Ex dest\n";
+		}
+
+		const char *what() const throw()
+		{
+			return "reason";
+
+		}
+};
 
 void f(int i)
 {
 	if (i)
-		throw std::runtime_error("hello");
+		throw MyEx();
 }
 
 int main()

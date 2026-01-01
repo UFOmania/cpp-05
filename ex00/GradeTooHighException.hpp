@@ -20,7 +20,7 @@ class GradeTooHighException : public std::exception
 {
    
     public:
-        ~GradeTooHighException()   throw ();
+        ~GradeTooHighException() throw ();
         GradeTooHighException();
         
         const char * what() const throw ();
