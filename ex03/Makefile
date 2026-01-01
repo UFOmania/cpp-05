@@ -1,13 +1,16 @@
-src =	AForm.cpp\
+src = 	AForm.cpp\
 		Bureaucrat.cpp\
 		FormAlreadySignedException.cpp\
+		FormIsUnknownException.cpp\
 		FormNotSignedException.cpp\
 		GradeTooHighException.cpp\
 		GradeTooLowException.cpp\
+		Intern.cpp\
 		main.cpp\
 		PresidentialPardonForm.cpp\
 		RobotomyRequestForm.cpp\
 		ShrubberyCreationForm.cpp
+
 flags = -Wall -Wextra -Werror -MMD -std=c++98
 
 obj = $(src:.cpp=.o)
