@@ -8,6 +8,7 @@
 
 AForm *Intern::makeForm(const std::string & formName, const std::string & formTarget)
 {
+
 	const std::string forms[] = {"ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm"};
 	for (int i = 0; i < 3; i++)
 	{
@@ -25,5 +26,4 @@ AForm *Intern::makeForm(const std::string & formName, const std::string & formTa
 		}
 	}
 	throw FormIsUnknownException();
-	return NULL;
 }
