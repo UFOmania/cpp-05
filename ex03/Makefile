@@ -1,8 +1,6 @@
 src = 	AForm.cpp\
 		Bureaucrat.cpp\
-		FormAlreadySignedException.cpp\
-		FormIsUnknownException.cpp\
-		FormNotSignedException.cpp\
+		CustomException.cpp\
 		GradeTooHighException.cpp\
 		GradeTooLowException.cpp\
 		Intern.cpp\

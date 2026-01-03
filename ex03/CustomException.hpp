@@ -1,42 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   CustomException.hpp                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/30 19:55:41 by massrayb          #+#    #+#             */
-/*   Updated: 2025/12/30 20:10:42 by massrayb         ###   ########.fr       */
+/*   Created: 2025/12/30 19:29:50 by massrayb          #+#    #+#             */
+/*   Updated: 2025/12/30 19:59:26 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "iostream"
+#ifndef CUSTOMEXCEPTION_HPP
+#define CUSTOMEXCEPTION_HPP
+
 #include <exception>
-#include "Form.hpp"
-#include "Bureaucrat.hpp"
-#include "GradeTooHighException.hpp"
-#include "GradeTooLowException.hpp"
 
-int main()
+class CustomException : public std::exception
 {
-	{
-		try{
-			Form f("F", 100, 40);
+	private:
+		const char *_msg;
 
-		}
-		catch(std::exception &e){
-			std::cerr<< e.what() << "\n";
-		}
-	}
+    public:
+        ~CustomException() throw();
+        CustomException();
+        CustomException(char const *msg);
+        
+        const char * what() const throw ();
+};
 
-	{
-		try{
-			Form f("F", 100, 40);
-			
-		}
-		catch(std::exception &e){
-			std::cerr<< e.what() << "\n";
-		}
-	}
-    
-}
+#endif

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef FORM_HPP
-#define FOEM_HPP
+#define FORM_HPP
 
 #include <ostream>
 #include <string>
@@ -33,12 +33,12 @@ class Form
         Form(Form const &other);
         Form &operator=(Form const &other);
         
-        std::string getName() const;
-        bool getIsSigned() const;
-        int getGradeToSign() const;
-        int getGradeToExec() const;
+        std::string	getName() const;
+        bool		getIsSigned() const;
+        int			getGradeToSign() const;
+        int			getGradeToExec() const;
 
-        void beSigned(Bureaucrat const &bur);
+        void		beSigned(Bureaucrat const &signer);
 };
 
 std::ostream &operator<<(std::ostream &os, Form const &form);

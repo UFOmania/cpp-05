@@ -13,16 +13,26 @@
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 #include "GradeTooLowException.hpp"
+#include "GradeTooHighException.hpp"
 #include "FormAlreadySignedException.hpp"
 
 Form::~Form()
 {}
 
-Form::Form() : _name("default"), _isSigned(true), _gradeToExec(1), _gradeToSign(1)
+Form::Form() : _name("default"), _isSigned(false), _gradeToExec(150), _gradeToSign(150)
 {}
  
-Form::Form(std::string name, int gradeToSign, int gradeToExic) : _name(name), _isSigned(false), _gradeToExec(gradeToExic), _gradeToSign(gradeToSign)
-{}
+Form::Form(std::string name, int gradeToSign, int gradeToExec) : _name(name), _isSigned(false)
+{
+	if (gradeToExec <= 0 || gradeToSign <= 0)
+		throw GradeTooHighException();
+	
+	if (gradeToExec > 150 || gradeToSign > 150)
+		throw GradeTooLowException();
+
+	_gradeToExec = gradeToExec;
+	_gradeToSign = gradeToSign;
+}
 
 Form::Form(Form const &other) 
 : _name(other._name)
@@ -60,12 +70,12 @@ int Form::getGradeToSign() const
     return _gradeToSign;
 }
 
-void Form::beSigned(Bureaucrat const &bur)
+void Form::beSigned(Bureaucrat const &signer)
 {
 	if (_isSigned == true)
 		throw FormAlreadySignedException();
 
-    if (bur.getGrade() > _gradeToSign)
+    if (signer.getGrade() > _gradeToSign)
         throw GradeTooLowException();
 		
     _isSigned = true;

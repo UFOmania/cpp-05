@@ -13,8 +13,7 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 #include "GradeTooLowException.hpp"
-#include "FormNotSignedException.hpp"
-#include "FormAlreadySignedException.hpp"
+#include "CustomException.hpp"
 
 AForm::~AForm()
 {}
@@ -65,7 +64,7 @@ int AForm::getGradeToSign() const
 void AForm::beSigned(Bureaucrat const &bur)
 {
 	if (_isSigned == true)
-		throw FormAlreadySignedException();
+		throw CustomException("Form is already Signed!");
 
     if (bur.getGrade() > _gradeToSign)
         throw GradeTooLowException();
@@ -84,7 +83,7 @@ std::ostream &operator<<(std::ostream &os, AForm const &form)
 void AForm::execute(Bureaucrat const & executor) const
 {
 	if (_isSigned == false)
-		throw FormNotSignedException();
+		throw CustomException("Form is not Signed!");
 	
 	if (_gradeToExec < executor.getGrade())
 		throw GradeTooLowException();

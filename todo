@@ -1,0 +1,3 @@
+what happens when you throw; to rethrow an exception
+lifetime differences between catch by value and catch by reference
+how exception copies work in C++98 (copy ctor calls, slicing, etc.)

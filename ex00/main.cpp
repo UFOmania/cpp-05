@@ -26,7 +26,7 @@ int main()
 		}
 		catch(std::exception &e)
 		{
-			std::cout << e.what()<< "\n";
+			std::cerr<< e.what()<< "\n";
 		}
 	}
 	std::cout << "----------------------------------\n";
@@ -36,7 +36,7 @@ int main()
 		}
 		catch(std::exception &e)
 		{
-			std::cout << e.what()<< "\n";
+			std::cerr<< e.what()<< "\n";
 		}
 	}
 	std::cout << "----------------------------------\n";
@@ -52,7 +52,7 @@ int main()
 		}
 		catch(std::exception &e)
 		{
-			std::cout << e.what()<< "\n";
+			std::cerr<< e.what()<< "\n";
 		}
 	}
 	std::cout << "----------------------------------\n";
@@ -68,7 +68,7 @@ int main()
 		}
 		catch(std::exception &e)
 		{
-			std::cout << e.what()<< "\n";
+			std::cerr<< e.what()<< "\n";
 		}
 	}
 	
@@ -83,7 +83,7 @@ int main()
 		}
 		catch (std::exception &e)
 		{
-			std::cout << e.what() << "\n";
+			std::cerr<< e.what() << "\n";
 	    }
 	}
 

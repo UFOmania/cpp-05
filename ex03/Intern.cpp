@@ -2,8 +2,14 @@
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
-#include "FormIsUnknownException.hpp"
+#include "CustomException.hpp"
 #include "AForm.hpp"
+
+
+Intern::~Intern(){}
+Intern::Intern(){}
+Intern::Intern(const Intern &other){(void)other;}
+Intern &Intern::operator=(const Intern &other){(void)other;}
 
 
 AForm *Intern::makeForm(const std::string & formName, const std::string & formTarget)
@@ -25,5 +31,5 @@ AForm *Intern::makeForm(const std::string & formName, const std::string & formTa
 			}
 		}
 	}
-	throw FormIsUnknownException();
+	throw CustomException("Form is Unknown!");
 }

@@ -6,36 +6,36 @@
 /*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 19:35:19 by massrayb          #+#    #+#             */
-/*   Updated: 2025/12/30 20:16:56 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/12/30 20:17:07 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include <ostream>
+#include <iostream>
 #include "Bureaucrat.hpp"
+#include "AForm.hpp"
 #include "GradeTooHighException.hpp"
 #include "GradeTooLowException.hpp"
-#include "AForm.hpp"
 
 Bureaucrat::~Bureaucrat()
 {}
 
-Bureaucrat::Bureaucrat(): _name("default"), _grade(150)
+
+Bureaucrat::Bureaucrat() : _name("default"), _grade(150)
 {}
 
 
 Bureaucrat::Bureaucrat(std::string const &name, int grade): _name(name)
 {
     if (grade > 150)
-        throw GradeTooHighException();
-    else if (grade <= 0)
         throw GradeTooLowException();
-
+    else if (grade <= 0)
+        throw GradeTooHighException();
     _grade = grade;
 }
 
 
-Bureaucrat::Bureaucrat(const Bureaucrat & other) : _name(other._name), _grade(other._grade)
+Bureaucrat::Bureaucrat(const Bureaucrat & other) : _grade(other._grade)
 {}
 
 
@@ -51,7 +51,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat & other)
 
 std::ostream &operator<<(std::ostream &os, Bureaucrat const &bureaucrat)
 {
-    os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade();
+    os <<  bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade();
     return os;
 }
 

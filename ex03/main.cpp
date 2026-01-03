@@ -27,7 +27,7 @@ int main()
     AForm *f;
 	try
 	{
-		f= i.makeForm("ShrubberyCwreationForm", "home");
+		f= i.makeForm("ShrubberyCreationForm", "home");
 	}
 	catch(const std::exception& e)
 	{
@@ -35,7 +35,7 @@ int main()
 		f = NULL;
 	}
 
-	std::cout << f << "\n";
+	std::cout << f << "--\n";
 	
 	// AForm *g = new RobotomyRequestForm();
 
