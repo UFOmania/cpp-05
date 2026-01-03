@@ -37,11 +37,10 @@ class AForm
         bool getIsSigned() const;
         int getGradeToSign() const;
         int getGradeToExec() const;
-        
 
         void beSigned(Bureaucrat const &bur);
-
         void execute(Bureaucrat const & executor) const;
+
 	protected:
 		virtual void exec() const = 0;
 };

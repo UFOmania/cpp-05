@@ -13,6 +13,7 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 #include "GradeTooLowException.hpp"
+#include "GradeTooHighException.hpp"
 #include "CustomException.hpp"
 
 AForm::~AForm()
@@ -21,8 +22,17 @@ AForm::~AForm()
 AForm::AForm() : _name("default"), _isSigned(true), _gradeToExec(1), _gradeToSign(1)
 {}
  
-AForm::AForm(std::string name, int gradeToSign, int gradeToExic) : _name(name), _isSigned(false), _gradeToExec(gradeToExic), _gradeToSign(gradeToSign)
-{}
+AForm::AForm(std::string name, int gradeToSign, int gradeToExec) : _name(name), _isSigned(false)
+{
+    if (gradeToExec <= 0 || gradeToSign <= 0)
+		throw GradeTooHighException();
+	
+	if (gradeToExec > 150 || gradeToSign > 150)
+		throw GradeTooLowException();
+
+	_gradeToExec = gradeToExec;
+	_gradeToSign = gradeToSign;
+}
 
 AForm::AForm(AForm const &other) 
 : _name(other._name)
