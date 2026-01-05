@@ -21,37 +21,27 @@ Form::~Form()
 
 Form::Form() : _name("default"), _isSigned(false), _gradeToExec(150), _gradeToSign(150)
 {}
- 
-Form::Form(std::string name, int gradeToSign, int gradeToExec) : _name(name), _isSigned(false)
+
+Form::Form(std::string name, int gradeToSign, int gradeToExec) : _name(name), _isSigned(false) , _gradeToExec(gradeToExec), _gradeToSign(gradeToSign)
 {
 	if (gradeToExec <= 0 || gradeToSign <= 0)
 		throw GradeTooHighException();
 	
 	if (gradeToExec > 150 || gradeToSign > 150)
 		throw GradeTooLowException();
-
-	_gradeToExec = gradeToExec;
-	_gradeToSign = gradeToSign;
 }
 
-Form::Form(Form const &other) 
-: _name(other._name)
-{
-    *this = other;
-}
+Form::Form(Form const &other) : _name(other._name), _isSigned(other._isSigned) , _gradeToExec(other._gradeToExec), _gradeToSign(other._gradeToSign)
+{}
 
-Form &Form::operator=(Form const &other)
+Form    &Form::operator=(Form const &other)
 {
-    if (this == &other)
-        return *this;
-
-    _gradeToExec = other._gradeToExec;
-    _gradeToSign = other._gradeToSign;
-    _isSigned = other._isSigned;
+    if (this != &other)
+        _isSigned = other._isSigned;
     return *this;
 }
 
-std::string Form::getName() const
+std::string const &Form::getName() const
 {
     return _name;
 }

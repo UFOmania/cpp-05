@@ -14,7 +14,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string const &target) : AForm(
 {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &other) 
-: AForm(AForm::getName(), 145, 137), _target(other._target)
+: AForm(other.getName(), 145, 137), _target(other._target)
 {}
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm const &other)

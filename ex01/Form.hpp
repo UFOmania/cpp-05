@@ -23,8 +23,8 @@ class Form
     private:
         const std::string _name;
         bool _isSigned;
-        int _gradeToExec;
-        int _gradeToSign;
+        const int _gradeToExec;
+        const int _gradeToSign;
 
     public:
         ~Form();
@@ -33,7 +33,8 @@ class Form
         Form(Form const &other);
         Form &operator=(Form const &other);
         
-        std::string	getName() const;
+        std::string const &	 getName() const;
+
         bool		getIsSigned() const;
         int			getGradeToSign() const;
         int			getGradeToExec() const;

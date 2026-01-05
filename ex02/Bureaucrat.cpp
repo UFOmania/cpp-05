@@ -35,17 +35,15 @@ Bureaucrat::Bureaucrat(std::string const &name, int grade): _name(name)
 }
 
 
-Bureaucrat::Bureaucrat(const Bureaucrat & other) : _grade(other._grade)
+Bureaucrat::Bureaucrat(const Bureaucrat & other): _name(other._name), _grade(other._grade)
 {}
 
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat & other)
 {
-    if (this == &other)
-        return *this;
+    if (this != &other)
+        _grade = other._grade;
 
-    _grade = other._grade;
-    
     return *this;
 }
 
@@ -55,7 +53,7 @@ std::ostream &operator<<(std::ostream &os, Bureaucrat const &bureaucrat)
     return os;
 }
 
-std::string  Bureaucrat::getName() const
+std::string  const & Bureaucrat::getName() const
 {
     return _name;
 }

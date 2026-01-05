@@ -6,15 +6,15 @@
 PresidentialPardonForm::~PresidentialPardonForm()
 {}
 
-PresidentialPardonForm::PresidentialPardonForm() : AForm("default", 145, 137), _target("default_target")
+PresidentialPardonForm::PresidentialPardonForm() : AForm("default", 25, 5), _target("default_target")
 {}
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string &target) 
-: AForm("PresidentialPardonForm", 145, 137), _target(target)
+: AForm("PresidentialPardonForm", 25, 5), _target(target)
 {}
 
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &other) 
-: AForm(AForm::getName(), 145, 137), _target(other._target)
+: AForm(other.getName(), 25, 5), _target(other._target)
 {}
 
 PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm const &other)

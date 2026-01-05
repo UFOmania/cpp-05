@@ -20,10 +20,10 @@
 AForm::~AForm()
 {}
 
-AForm::AForm() : _name("default"), _isSigned(true), _gradeToExec(1), _gradeToSign(1)
+AForm::AForm() : _name("default"), _isSigned(false), _gradeToExec(150), _gradeToSign(150)
 {}
  
-AForm::AForm(std::string name, int gradeToSign, int gradeToExec) : _name(name), _isSigned(false)
+AForm::AForm(std::string name, int gradeToSign, int gradeToExec) : _name(name), _isSigned(false), _gradeToExec(gradeToExec), _gradeToSign(gradeToSign)
 {
     if (gradeToExec <= 0 || gradeToSign <= 0)
 		throw GradeTooHighException();
@@ -31,28 +31,20 @@ AForm::AForm(std::string name, int gradeToSign, int gradeToExec) : _name(name), 
 	if (gradeToExec > 150 || gradeToSign > 150)
 		throw GradeTooLowException();
 
-	_gradeToExec = gradeToExec;
-	_gradeToSign = gradeToSign;
 }
 
-AForm::AForm(AForm const &other) 
-: _name(other._name)
-{
-    *this = other;
-}
+AForm::AForm(AForm const &other) : _name(other._name), _isSigned(other._isSigned), _gradeToExec(other._gradeToExec), _gradeToSign(other._gradeToSign)
+{}
 
 AForm &AForm::operator=(AForm const &other)
 {
-    if (this == &other)
-        return *this;
+    if (this != &other)
+        _isSigned = other._isSigned;
 
-    _gradeToExec = other._gradeToExec;
-    _gradeToSign = other._gradeToSign;
-    _isSigned = other._isSigned;
     return *this;
 }
 
-std::string AForm::getName() const
+std::string const & AForm::getName() const
 {
     return _name;
 }

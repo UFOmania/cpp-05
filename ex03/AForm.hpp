@@ -23,8 +23,8 @@ class AForm
     private:
         const std::string _name;
         bool _isSigned;
-        int _gradeToExec;
-        int _gradeToSign;
+        const int _gradeToExec;
+        const int _gradeToSign;
 
     public:
         virtual ~AForm();
@@ -33,7 +33,7 @@ class AForm
         AForm(AForm const &other);
         AForm &operator=(AForm const &other);
         
-        std::string getName() const;
+        std::string const & getName() const;
         bool getIsSigned() const;
         int getGradeToSign() const;
         int getGradeToExec() const;

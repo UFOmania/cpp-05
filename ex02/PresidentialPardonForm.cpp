@@ -15,7 +15,7 @@ PresidentialPardonForm::PresidentialPardonForm(const std::string &target)
 {}
 
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &other) 
-: AForm(AForm::getName(), 145, 137), _target(other._target)
+: AForm(other.getName(), 145, 137), _target(other._target)
 {}
 
 PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm const &other)
