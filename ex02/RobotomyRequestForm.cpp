@@ -32,7 +32,7 @@ void RobotomyRequestForm::exec() const
 {
 	std::cout << "drilling noise !!!!\n";
 	srand(time(0));
-	if (rand() & 2)
+	if (rand() & 1)
 		std::cout << _target << " hase been successfully robotomized\n";
 	
 }

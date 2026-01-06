@@ -45,9 +45,9 @@ int main()
 		try{
 			Bureaucrat a("C", 50);
 			std::cout << "1) " << a << "\n";
-			a.downgrade(10);
+			a.decrementGrade(10);
 			std::cout << "2) " << a << "\n";
-			a.downgrade(200);
+			a.decrementGrade(200);
 			std::cout << "3) " << a << "\n";
 		}
 		catch(std::exception &e)
@@ -61,9 +61,9 @@ int main()
 		try{
 			Bureaucrat a("D", 50);
 			std::cout << "1) " << a << "\n";
-			a.upgrade(10);
+			a.incrementGrade(10);
 			std::cout << "2) " << a << "\n";
-			a.upgrade(200);
+			a.incrementGrade(200);
 			std::cout << "3) " << a << "\n";
 		}
 		catch(std::exception &e)

@@ -27,13 +27,13 @@ AForm *Intern::makeForm(const std::string & formName, const std::string & formTa
 			switch (i)
 			{
 				case 0:
-					std::cout << "Intern has made Form " << forms[i] << "\n";
+					std::cout << "Intern creates " << forms[i] << "\n";
 					return new ShrubberyCreationForm(formTarget);
 				case 1:
-					std::cout << "Intern has made Form " << forms[i] << "\n";
+					std::cout << "Intern creates " << forms[i] << "\n";
 					return new RobotomyRequestForm(formTarget);
 				case 2:
-					std::cout << "Intern has made Form " << forms[i] << "\n";
+					std::cout << "Intern creates " << forms[i] << "\n";
 					return new PresidentialPardonForm(formTarget);
 			}
 		}

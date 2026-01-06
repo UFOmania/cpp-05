@@ -61,14 +61,14 @@ int Bureaucrat::getGrade() const
     return _grade;
 }
 
-void    Bureaucrat::upgrade(int by)
+void    Bureaucrat::incrementGrade(int by)
 {
     if (_grade - by <= 0)
         throw GradeTooHighException();
     _grade -= by;
 }
 
-void    Bureaucrat::downgrade(int by)
+void    Bureaucrat::decrementGrade(int by)
 {
     if (_grade + by > 150)
         throw GradeTooLowException();
