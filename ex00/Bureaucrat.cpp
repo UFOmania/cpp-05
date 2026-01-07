@@ -12,8 +12,6 @@
 
 #include <ostream>
 #include "Bureaucrat.hpp"
-#include "GradeTooHighException.hpp"
-#include "GradeTooLowException.hpp"
 
 Bureaucrat::~Bureaucrat()
 {}
@@ -73,4 +71,22 @@ void    Bureaucrat::decrementGrade(int by)
     if (_grade + by > 150)
         throw GradeTooLowException();
     _grade += by;
+}
+
+Bureaucrat::GradeTooHighException::GradeTooHighException()
+{}
+Bureaucrat::GradeTooHighException::~GradeTooHighException()
+{}
+Bureaucrat::GradeTooLowException::GradeTooLowException()
+{}
+Bureaucrat::GradeTooLowException::~GradeTooLowException()
+{}
+
+const char * Bureaucrat::GradeTooHighException::what() const throw()
+{
+    return "Grade is too high!";
+}
+const char * Bureaucrat::GradeTooLowException::what() const throw()
+{
+    return "Grade is too low!";
 }
