@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ostream>
 #include "Bureaucrat.hpp"
 
 Bureaucrat::~Bureaucrat()
@@ -45,7 +44,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat & other)
 
 std::ostream &operator<<(std::ostream &os, Bureaucrat const &bureaucrat)
 {
-    os <<  bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade();
+    os <<  bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".";
     return os;
 }
 
@@ -72,15 +71,6 @@ void    Bureaucrat::decrementGrade(int by)
         throw GradeTooLowException();
     _grade += by;
 }
-
-Bureaucrat::GradeTooHighException::GradeTooHighException()
-{}
-Bureaucrat::GradeTooHighException::~GradeTooHighException()
-{}
-Bureaucrat::GradeTooLowException::GradeTooLowException()
-{}
-Bureaucrat::GradeTooLowException::~GradeTooLowException()
-{}
 
 const char * Bureaucrat::GradeTooHighException::what() const throw()
 {

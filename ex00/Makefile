@@ -1,21 +1,17 @@
-src = Bureaucrat.cpp GradeTooHighException.cpp GradeTooLowException.cpp main.cpp
+src = Bureaucrat.cpp main.cpp
 
-flags = -Wall -Wextra -Werror -MMD -std=c++98
+flags = -Wall -Wextra -Werror -std=c++98
 
 obj = $(src:.cpp=.o)
-deps = $(src:.cpp=.d)
 
--include deps
-
-NAME= app
-
+NAME = app
 
 all: $(NAME)
 
-$(NAME): $(obj)
+$(NAME): $(obj) 
 	c++ $(flags) $(obj) -o $@
 
-%.o: %.cpp
+%.o: %.cpp Bureaucrat.hpp
 	c++ $(flags) -c $< -o $@
 
 clean:

@@ -14,8 +14,6 @@
 #include <exception>
 
 #include "Bureaucrat.hpp"
-#include "GradeTooHighException.hpp"
-#include "GradeTooLowException.hpp"
 
 int main()
 {
