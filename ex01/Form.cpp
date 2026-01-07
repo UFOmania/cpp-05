@@ -69,6 +69,7 @@ void Form::beSigned(Bureaucrat const &signer)
         throw Form::GradeTooLowException();
 		
     _isSigned = true;
+    std::cout << signer.getName() << " signed " << _name << "\n";
 }
 
 std::ostream &operator<<(std::ostream &os, Form const &form)
