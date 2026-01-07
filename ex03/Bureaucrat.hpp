@@ -6,7 +6,7 @@
 /*   By: massrayb <massrayb@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 19:15:03 by massrayb          #+#    #+#             */
-/*   Updated: 2025/12/30 20:17:11 by massrayb         ###   ########.fr       */
+/*   Updated: 2025/12/30 20:16:48 by massrayb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define BUREAUCRAT_HPP
 
 #include <string>
+#include <exception>
 class AForm;
 
 class Bureaucrat
@@ -22,6 +23,18 @@ class Bureaucrat
         const std::string _name;
         int _grade;
     public:
+        class GradeTooHighException : public std::exception
+        {
+            public:
+                const char * what() const throw();
+        };
+
+        class GradeTooLowException : public std::exception
+        {
+            public:
+                const char * what() const throw();
+        };
+
         ~Bureaucrat();
         Bureaucrat();
         Bureaucrat(const std::string & name, int grade);

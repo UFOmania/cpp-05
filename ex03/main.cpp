@@ -35,7 +35,7 @@ int main()
 		f = NULL;
 	}
 
-	std::cout << f << "--\n";
+	// std::cout << f << "--\n";
 	
 	// AForm *g = new RobotomyRequestForm();
 

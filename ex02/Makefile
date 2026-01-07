@@ -1,19 +1,16 @@
 src =	AForm.cpp\
 		Bureaucrat.cpp\
-		FormAlreadySignedException.cpp\
-		FormNotSignedException.cpp\
-		GradeTooHighException.cpp\
-		GradeTooLowException.cpp\
 		main.cpp\
 		PresidentialPardonForm.cpp\
 		RobotomyRequestForm.cpp\
 		ShrubberyCreationForm.cpp
+
 flags = -Wall -Wextra -Werror -MMD -std=c++98
 
 obj = $(src:.cpp=.o)
 deps = $(src:.cpp=.d)
 
--include deps
+-include $(deps)
 
 NAME= app
 

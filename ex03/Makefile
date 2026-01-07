@@ -1,8 +1,5 @@
 src = 	AForm.cpp\
 		Bureaucrat.cpp\
-		CustomException.cpp\
-		GradeTooHighException.cpp\
-		GradeTooLowException.cpp\
 		Intern.cpp\
 		main.cpp\
 		PresidentialPardonForm.cpp\
@@ -14,8 +11,7 @@ flags = -Wall -Wextra -Werror -MMD -std=c++98
 obj = $(src:.cpp=.o)
 deps = $(src:.cpp=.d)
 
--include deps
-
+-include $(deps)
 NAME= app
 
 

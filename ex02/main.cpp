@@ -19,7 +19,6 @@
 
 int main()
 {
-
     // Form f("stage", 10, 2);
     // std::cout << f << std::endl;
     AForm *f = new ShrubberyCreationForm();
@@ -40,7 +39,9 @@ int main()
 	try
 	{
 		r.signForm(*g);
+		r.signForm(*f);
 		r.executeForm(*g);
+		r.executeForm(*f);
 
 	}
 	catch(const std::exception& e)
@@ -50,6 +51,7 @@ int main()
 	
     // Bureaucrat t("icham", 2);
 	delete f;
+	delete g;
 
     // v.signForm(f);
     // r.signForm(f);

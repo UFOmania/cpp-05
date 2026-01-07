@@ -12,9 +12,7 @@
 
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
-#include "GradeTooLowException.hpp"
-#include "GradeTooHighException.hpp"
-#include "CustomException.hpp"
+#include <iostream>
 
 AForm::~AForm()
 {}
@@ -63,12 +61,12 @@ int AForm::getGradeToSign() const
 }
 
 
-void AForm::beSigned(Bureaucrat const &bur)
+void AForm::beSigned(Bureaucrat const &signer)
 {
 	if (_isSigned == true)
-		throw CustomException("Form is already Signed!");
+		throw FormAlreadySignedException();
 
-    if (bur.getGrade() > _gradeToSign)
+    if (signer.getGrade() > _gradeToSign)
         throw GradeTooLowException();
 		
     _isSigned = true;
@@ -76,7 +74,7 @@ void AForm::beSigned(Bureaucrat const &bur)
 
 std::ostream &operator<<(std::ostream &os, AForm const &form)
 {
-	os << "Form: " << form.getName() << ", signed:" << (form.getIsSigned() ? " yes" : " no") << ", gradeToSign:" << form.getGradeToSign()<< ", gradeToExic:" << form.getGradeToExec();
+	os << "Form: " << form.getName() << ", signed:" << (form.getIsSigned() ? " yes" : " no") << ", gradeToSign:" << form.getGradeToSign()<< ", gradeToExec:" << form.getGradeToExec();
 
 	return os;
 }
@@ -85,12 +83,29 @@ std::ostream &operator<<(std::ostream &os, AForm const &form)
 void AForm::execute(Bureaucrat const & executor) const
 {
 	if (_isSigned == false)
-		throw CustomException("Form is not Signed!");
+		throw FormNotSignedException();
 	
 	if (_gradeToExec < executor.getGrade())
 		throw GradeTooLowException();
 
 	exec();
+}
+
+const char *AForm::GradeTooHighException::what() const throw()
+{
+	return "Exception: Grade Too High";
+}
+const char *AForm::GradeTooLowException::what() const throw()
+{
+	return "Exception: Grade Too Low";
+}
+const char *AForm::FormNotSignedException::what() const throw()
+{
+	return "Exception: Form Not Signed";
+}
+const char *AForm::FormAlreadySignedException::what() const throw()
+{
+	return "Exception: Form Already Signed";
 }
 
 

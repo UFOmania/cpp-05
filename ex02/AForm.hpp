@@ -14,6 +14,7 @@
 #define AFORM_HPP
 
 #include <ostream>
+#include <exception>
 #include <string>
 
 class Bureaucrat;
@@ -27,9 +28,29 @@ class AForm
         const int _gradeToSign;
 
     public:
+        class GradeTooHighException: public std::exception
+        {
+            public:
+                const char *what() const throw();
+        };
+        class GradeTooLowException: public std::exception
+        {
+            public:
+                const char *what() const throw();
+        };
+        class FormNotSignedException: public std::exception
+        {
+            public:
+                const char *what() const throw();
+        };
+        class FormAlreadySignedException: public std::exception
+        {
+            public:
+                const char *what() const throw();
+        };
         virtual ~AForm();
         AForm();
-        AForm(std::string _name, int gradeToSign, int gradeToExic);
+        AForm(std::string name, int gradeToSign, int gradeToExic);
         AForm(AForm const &other);
         AForm &operator=(AForm const &other);
         
@@ -42,6 +63,7 @@ class AForm
         void beSigned(Bureaucrat const &bur);
 
         void execute(Bureaucrat const & executor) const;
+
 	protected:
 		virtual void exec() const = 0;
 };

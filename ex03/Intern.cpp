@@ -2,7 +2,6 @@
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
-#include "CustomException.hpp"
 #include "AForm.hpp"
 #include <iostream>
 
@@ -24,19 +23,19 @@ AForm *Intern::makeForm(const std::string & formName, const std::string & formTa
 	{
 		if (forms[i] == formName)
 		{
+			std::cout << "Intern creates " << forms[i] << "\n";
 			switch (i)
 			{
 				case 0:
-					std::cout << "Intern creates " << forms[i] << "\n";
 					return new ShrubberyCreationForm(formTarget);
 				case 1:
-					std::cout << "Intern creates " << forms[i] << "\n";
 					return new RobotomyRequestForm(formTarget);
 				case 2:
-					std::cout << "Intern creates " << forms[i] << "\n";
 					return new PresidentialPardonForm(formTarget);
 			}
 		}
 	}
-	throw CustomException("Form is Unknown!");
+	std::cout << "Intern couldn't create " << formName << "\n";
+	return NULL;
 }
+

@@ -1,13 +1,11 @@
 #include "PresidentialPardonForm.hpp"
-#include "FormNotSignedException.hpp"
-#include "GradeTooLowException.hpp"
 #include <iostream>
 #include "Bureaucrat.hpp"
 
 PresidentialPardonForm::~PresidentialPardonForm()
 {}
 
-PresidentialPardonForm::PresidentialPardonForm() : AForm("default", 25, 5), _target("default_target")
+PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm", 25, 5), _target("default_target")
 {}
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string &target) 
@@ -15,7 +13,7 @@ PresidentialPardonForm::PresidentialPardonForm(const std::string &target)
 {}
 
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &other) 
-: AForm(other.getName(), 145, 137), _target(other._target)
+: AForm(other.getName(), 25, 5), _target(other._target)
 {}
 
 PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm const &other)
@@ -30,5 +28,6 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm
 
 void PresidentialPardonForm::exec() const
 {
+    
 	std::cout << _target << " has been pardoned by Zaphod Beeblebrox\n";
 }

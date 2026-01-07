@@ -1,8 +1,7 @@
 #include "RobotomyRequestForm.hpp"
 #include <iostream>
-#include "Bureaucrat.hpp"
-#include "GradeTooLowException.hpp" 
 #include <cstdlib>
+#include <ctime>
 
 RobotomyRequestForm::~RobotomyRequestForm()
 {}
@@ -14,7 +13,7 @@ RobotomyRequestForm::RobotomyRequestForm(std::string const &target) : AForm("Rob
 {}
 
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &other) 
-: AForm(other.getName(), 145, 137), _target(other._target)
+: AForm(other.getName(), 72, 45), _target(other._target)
 {}
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm const &other)
@@ -29,9 +28,12 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm const &o
 
 void RobotomyRequestForm::exec() const
 {
+	
 	std::cout << "drilling noise !!!!\n";
-	srand(time(0));
-	if (rand() & 2)
-		std::cout << _target << " hase been successfully robotomized\n";
+	std::srand(std::time(0));
+	if (std::rand() & 1)
+		std::cout << _target << " has been successfully robotomized\n";
+	else
+		std::cout << "Failed to robotomize " << _target << "\n";
 	
 }
