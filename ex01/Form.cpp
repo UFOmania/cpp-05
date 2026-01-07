@@ -12,9 +12,7 @@
 
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
-#include "GradeTooLowException.hpp"
-#include "GradeTooHighException.hpp"
-#include "FormAlreadySignedException.hpp"
+#include <iostream>
 
 Form::~Form()
 {}
@@ -25,10 +23,10 @@ Form::Form() : _name("default"), _isSigned(false), _gradeToExec(150), _gradeToSi
 Form::Form(std::string name, int gradeToSign, int gradeToExec) : _name(name), _isSigned(false) , _gradeToExec(gradeToExec), _gradeToSign(gradeToSign)
 {
 	if (gradeToExec <= 0 || gradeToSign <= 0)
-		throw GradeTooHighException();
+		throw Form::GradeTooHighException();
 	
 	if (gradeToExec > 150 || gradeToSign > 150)
-		throw GradeTooLowException();
+		throw Form::GradeTooLowException();
 }
 
 Form::Form(Form const &other) : _name(other._name), _isSigned(other._isSigned) , _gradeToExec(other._gradeToExec), _gradeToSign(other._gradeToSign)
@@ -63,21 +61,32 @@ int Form::getGradeToSign() const
 void Form::beSigned(Bureaucrat const &signer)
 {
 	if (_isSigned == true)
-		throw FormAlreadySignedException();
-
+    {
+		std::cout << "Form " << _name << " is already signed.\n";
+        return;
+    }
     if (signer.getGrade() > _gradeToSign)
-        throw GradeTooLowException();
+        throw Form::GradeTooLowException();
 		
     _isSigned = true;
 }
 
 std::ostream &operator<<(std::ostream &os, Form const &form)
 {
-    os << "Form: " << form.getName() << ", signed:" << (form.getIsSigned() ? " yes" : " no") << ", gradeToSign:" << form.getGradeToSign()<< ", gradeToExic:" << form.getGradeToExec();
+    os << "Form: " << form.getName() << ", signed:" << (form.getIsSigned() ? " yes" : " no") << ", gradeToSign:" << form.getGradeToSign()<< ", gradeToExec:" << form.getGradeToExec();
 
     return os;
 }
 
+
+
+
+const char * Form::GradeTooHighException::what() const throw() {
+    return "Form Exception: Grade Too High";
+}
+const char * Form::GradeTooLowException::what() const throw() {
+    return "Form Exception: Grade Too Low";
+}
 
 
 

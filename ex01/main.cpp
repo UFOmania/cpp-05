@@ -14,15 +14,13 @@
 #include <exception>
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
-#include "GradeTooHighException.hpp"
-#include "GradeTooLowException.hpp"
 
 int main()
 {
 	{
 		try{
 			Form f("F", 100, 40);
-
+			std::cout << f << "\n";
 		}
 		catch(std::exception &e){
 			std::cerr<< e.what() << "\n";
@@ -31,8 +29,8 @@ int main()
 
 	{
 		try{
-			Form f("F", 100, 40);
-			
+			Form f("F", 100, 0);
+			std::cout << f << "\n";
 		}
 		catch(std::exception &e){
 			std::cerr<< e.what() << "\n";

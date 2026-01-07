@@ -15,6 +15,8 @@
 
 #include <ostream>
 #include <string>
+#include <exception>
+#include <iostream>
 
 class Bureaucrat;
 
@@ -27,9 +29,20 @@ class Form
         const int _gradeToSign;
 
     public:
+        class GradeTooHighException : public std::exception
+        {  
+            public:
+                const char *what() const throw();
+        };
+        class GradeTooLowException : public std::exception
+        {
+            public:
+                const char *what() const throw();
+        };
+
         ~Form();
         Form();
-        Form(std::string _name, int gradeToSign, int gradeToExic);
+        Form(std::string name, int gradeToSign, int gradeToExec);
         Form(Form const &other);
         Form &operator=(Form const &other);
         

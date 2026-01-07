@@ -1,8 +1,5 @@
 src = 	Bureaucrat.cpp\
-		FormAlreadySignedException.cpp\
 		Form.cpp\
-		GradeTooHighException.cpp\
-		GradeTooLowException.cpp\
 		main.cpp	
 
 flags = -Wall -Wextra -Werror -MMD -std=c++98
@@ -10,7 +7,7 @@ flags = -Wall -Wextra -Werror -MMD -std=c++98
 obj = $(src:.cpp=.o)
 deps = $(src:.cpp=.d)
 
--include deps
+-include $(deps)
 
 NAME= app
 
