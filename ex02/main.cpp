@@ -15,10 +15,19 @@
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 
 int main()
 {
+	PresidentialPardonForm a("car");
+	Bureaucrat b("B", 10);
+	Bureaucrat c("C", 10);
+
+	b.signForm(a);
+	c.signForm(a);
+
+	std::cout << "============\n";
     // Form f("stage", 10, 2);
     // std::cout << f << std::endl;
     AForm *f = new ShrubberyCreationForm();

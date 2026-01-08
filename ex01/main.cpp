@@ -17,6 +17,15 @@
 
 int main()
 {
+	Form a("car", 100, 20);
+	Bureaucrat b("B", 10);
+	Bureaucrat c("C", 10);
+
+	b.signForm(a);
+	c.signForm(a);
+
+	std::cout << "=======================\n";
+
 	{
 		try{
 			Form f("F", 100, 40);
