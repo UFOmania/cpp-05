@@ -48,6 +48,7 @@ class AForm
             public:
                 const char *what() const throw();
         };
+        
         virtual ~AForm();
         AForm();
         AForm(std::string name, int gradeToSign, int gradeToExic);

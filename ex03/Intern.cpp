@@ -18,7 +18,7 @@ Intern &Intern::operator=(const Intern &other){
 AForm *Intern::makeForm(const std::string & formName, const std::string & formTarget)
 {
 
-	const std::string forms[] = {"ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm"};
+	const std::string forms[] = {"shrubbery creation", "robotomy request", "presidential pardon"};
 	for (int i = 0; i < 3; i++)
 	{
 		if (forms[i] == formName)
