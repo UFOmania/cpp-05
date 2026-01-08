@@ -5,12 +5,16 @@ src =	AForm.cpp\
 		RobotomyRequestForm.cpp\
 		ShrubberyCreationForm.cpp
 
-flags = -Wall -Wextra -Werror -MMD -std=c++98
+deps = 	AForm.hpp\
+		Bureaucrat.hpp\
+		PresidentialPardonForm.hpp\
+		RobotomyRequestForm.hpp\
+		ShrubberyCreationForm.hpp
+
+flags = -Wall -Wextra -Werror -std=c++98
 
 obj = $(src:.cpp=.o)
-deps = $(src:.cpp=.d)
 
--include $(deps)
 
 NAME= app
 
@@ -20,11 +24,11 @@ all: $(NAME)
 $(NAME): $(obj)
 	c++ $(flags) $(obj) -o $@
 
-%.o: %.cpp
+%.o: %.cpp $(deps)
 	c++ $(flags) -c $< -o $@
 
 clean:
-	rm -f $(obj) $(deps)
+	rm -f $(obj)
 
 fclean: clean
 	rm -f $(NAME)

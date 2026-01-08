@@ -15,7 +15,7 @@ $(NAME): $(obj)
 	c++ $(flags) -c $< -o $@
 
 clean:
-	rm -f $(obj) $(deps)
+	rm -f $(obj) 
 
 fclean: clean
 	rm -f $(NAME)

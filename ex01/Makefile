@@ -2,12 +2,10 @@ src = 	Bureaucrat.cpp\
 		Form.cpp\
 		main.cpp	
 
-flags = -Wall -Wextra -Werror -MMD -std=c++98
+flags = -Wall -Wextra -Werror -std=c++98
 
 obj = $(src:.cpp=.o)
-deps = $(src:.cpp=.d)
-
--include $(deps)
+deps = Bureaucrat.hpp Form.hpp
 
 NAME= app
 
@@ -21,7 +19,7 @@ $(NAME): $(obj)
 	c++ $(flags) -c $< -o $@
 
 clean:
-	rm -f $(obj) $(deps)
+	rm -f $(obj)
 
 fclean: clean
 	rm -f $(NAME)
